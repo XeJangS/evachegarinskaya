@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест з інформатики</title>
+    <script>
+        var totalScore = 0;
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            var selectedAnswer = getSelectedAnswer(questionNumber);
+
+            if (selectedAnswer === correctAnswer) {
+                alert("Правильна відповідь!");
+                totalScore++;
+            } else {
+                alert("Неправильна відповідь. Правильна відповідь: " + correctAnswer);
+            }
+        }
+
+        function getSelectedAnswer(questionNumber) {
+            var answers = document.forms["quiz"]["Q" + questionNumber];
+
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i].checked) {
+                    return answers[i].value;
+                }
+            }
+
+            return null;
+        }
+
+        function showResult() {
+            alert("Загальний результат: " + totalScore + " з 12.");
+        }
+
+        function restartQuiz() {
+            totalScore = 0;
+            alert("Тест скинутий. Почнемо з початку.");
+            resetRadioButtons();
+        }
+
+        function resetRadioButtons() {
+            var radioButtons = document.querySelectorAll('input[type="radio"]');
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].checked = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Тест з інформатики</h1>
+
+    <form name="quiz">
+        <p>Питання 1: Що таке HTML?</p>
+        <input type="radio" name="Q1" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q1" value="B"> B. Мова розмітки гіпертексту.<br>
+        <input type="radio" name="Q1" value="C"> C. Операційна система.<br>
+
+        <p>Питання 2: Як правильно визначити змінну в мові програмування JavaScript?</p>
+        <input type="radio" name="Q2" value="A"> A. var = myVar;<br>
+        <input type="radio" name="Q2" value="B"> B. variable myVar;<br>
+        <input type="radio" name="Q2" value="C"> C. var myVar;<br>
+
+        <p>Питання 3: Як правильно визначити стиль для елементу в CSS?</p>
+        <input type="radio" name="Q3" value="A"> A. #myElement {стиль: значення;}<br>
+        <input type="radio" name="Q3" value="B"> B. .myElement {стиль: значення;}<br>
+        <input type="radio" name="Q3" value="C"> C. <myElement> {стиль: значення;}<br>
+
+        <!-- Додайте питання 4-12 аналогічно -->
+
+        <p>Питання 4: Що таке JavaScript?</p>
+        <input type="radio" name="Q4" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q4" value="B"> B. Графічний дизайн.<br>
+        <input type="radio" name="Q4" value="C"> C. Система управління базами даних.<br>
+
+        <p>Питання 5: Що таке CSS?</p>
+        <input type="radio" name="Q5" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q5" value="B"> B. Мова розмітки гіпертексту.<br>
+        <input type="radio" name="Q5" value="C"> C. Таблиця баз даних.<br>
+
+        <p>Питання 6: Що таке HTML?</p>
+        <input type="radio" name="Q6" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q6" value="B"> B. Мова розмітки гіпертексту.<br>
+        <input type="radio" name="Q6" value="C"> C. Протокол передачі даних.<br>
+
+        <p>Питання 7: Що таке AJAX?</p>
+        <input type="radio" name="Q7" value="A"> A. Технологія для створення анімації.<br>
+        <input type="radio" name="Q7" value="B"> B. Техніка верстки сторінок.<br>
+        <input type="radio" name="Q7" value="C"> C. Техніка для асинхронного обміну даними з сервером.<br>
+
+        <p>Питання 8: Як правильно створити коментар в HTML?</p>
+        <input type="radio" name="Q8" value="A"> A. //Це коментар в HTML<br>
+        <input type="radio" name="Q8" value="B"> B. <!--Це коментар в HTML--><br>
+        <input type="radio" name="Q8" value="C"> C. /Це коментар в HTML/<br>
+
+        <p>Питання 9: Що таке SQL?</p>
+        <input type="radio" name="Q9" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q9" value="B"> B. Система управління версіями.<br>
+        <input type="radio" name="Q9" value="C"> C. Мова структурованих запитів до баз даних.<br>
+
+        <p>Питання 10: Як правильно викликати функцію в JavaScript?</p>
+        <input type="radio" name="Q10" value="A"> A. run myFunction();<br>
+        <input type="radio" name="Q10" value="B"> B. call myFunction();<br>
+        <input type="radio" name="Q10" value="C"> C. myFunction();<br>
+
+        <p>Питання 11: Що таке власник властивості в CSS?</p>
+        <input type="radio" name="Q11" value="A"> A. Елемент, на якому встановлена властивість.<br>
+        <input type="radio" name="Q11" value="B"> B. Власник сторінки.<br>
+        <input type="radio" name="Q11" value="C"> C. Кореневий елемент.<br>
+
+        <p>Питання 12: Що таке атрибут в HTML?</p>
+        <input type="radio" name="Q12" value="A"> A. Мова програмування.<br>
+        <input type="radio" name="Q12" value="B"> B. Додаткова інформація до тегу, задавана у вигляді пари "ім'я=значення".<br>
+        <input type="radio" name="Q12" value="C"> C. Стиль кодування.<br>
+
+        <button type="button" onclick="checkAnswer(1, 'B')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(2, 'C')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(3, 'B')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(4, 'A')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(5, 'B')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(6, 'B')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(7, 'C')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(8, 'B')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(9, 'C')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(10, 'C')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(11, 'A')">Перевірити відповідь</button>
+        <button type="button" onclick="checkAnswer(12, 'B')">Перевірити відповідь</button>
+
+        <button type="button" onclick="showResult()">Показати результат</button>
+        <button type="button" onclick="restartQuiz()">Почати спочатку</button>
+    </form>
+</body>
+</html>
